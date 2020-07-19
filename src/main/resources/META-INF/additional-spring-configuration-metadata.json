@@ -4,5 +4,10 @@
       "name": "spring.mybatis.mapper-locations",
       "type": "java.lang.String",
       "description": "Description for spring.mybatis.mapper-locations."
-  }
-] }
+    },
+    {
+      "name": "user-center.ribbon.NFLoadBalancerRuleClassName",
+      "type": "java.lang.String",
+      "description": "Description for user-center.ribbon.NFLoadBalancerRuleClassName."
+    }
+  ] }

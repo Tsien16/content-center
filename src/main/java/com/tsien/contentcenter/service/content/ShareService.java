@@ -5,6 +5,7 @@ import com.tsien.contentcenter.domain.dto.content.ShareDTO;
 import com.tsien.contentcenter.domain.dto.user.UserDTO;
 import com.tsien.contentcenter.domain.model.content.Share;
 import org.springframework.beans.BeanUtils;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -24,6 +25,12 @@ public class ShareService {
     @Resource
     private ShareMapper shareMapper;
 
+    @Resource
+    private DiscoveryClient discoveryClient;
+
+    @Resource
+    private RestTemplate restTemplate;
+
     /**
      * 通过ID获取分享详细
      *
@@ -38,13 +45,11 @@ public class ShareService {
         // 发布人ID
         Integer userId = share.getUserId();
 
-        RestTemplate restTemplate = new RestTemplate();
-
         UserDTO userDTO = restTemplate.getForObject(
-                "http://localhost:8080/users/{id}", UserDTO.class, userId
-        );
-        ShareDTO shareDTO = new ShareDTO();
+                "http://user-center/users/{id}", UserDTO.class, userId);
+
         // 消息装配
+        ShareDTO shareDTO = new ShareDTO();
         BeanUtils.copyProperties(share, shareDTO);
         shareDTO.setWxNickname(userDTO != null ? userDTO.getWxNickname() : null);
 
