@@ -4,10 +4,9 @@ import com.tsien.contentcenter.dao.content.ShareMapper;
 import com.tsien.contentcenter.domain.dto.content.ShareDTO;
 import com.tsien.contentcenter.domain.dto.user.UserDTO;
 import com.tsien.contentcenter.domain.model.content.Share;
+import com.tsien.contentcenter.feignclient.UserCenterFeignClient;
 import org.springframework.beans.BeanUtils;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 
@@ -26,10 +25,7 @@ public class ShareService {
     private ShareMapper shareMapper;
 
     @Resource
-    private DiscoveryClient discoveryClient;
-
-    @Resource
-    private RestTemplate restTemplate;
+    private UserCenterFeignClient userCenterFeignClient;
 
     /**
      * 通过ID获取分享详细
@@ -45,8 +41,8 @@ public class ShareService {
         // 发布人ID
         Integer userId = share.getUserId();
 
-        UserDTO userDTO = restTemplate.getForObject(
-                "http://user-center/users/{id}", UserDTO.class, userId);
+        // 使用OpenFeign 获取用户中心UserDTO
+        UserDTO userDTO = userCenterFeignClient.findById(userId);
 
         // 消息装配
         ShareDTO shareDTO = new ShareDTO();
