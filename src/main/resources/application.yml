@@ -8,11 +8,17 @@ spring:
     nacos:
       discovery:
         server-addr: 81.68.78.224:8848
-  #        cluster-name: BJ
+        #        cluster-name: BJ
+    sentinel:
+#      filter:
+#        # 关闭对spring mvc端点的保护
+#        enabled: false
+      transport:
+        # 指定sentinel控制台的地址
+        dashboard: localhost:8080
+        port: 8720
   application:
     name: content-center
-  main:
-    allow-bean-definition-overriding: true
 
 mybatis:
   mapper-locations: classpath:mappers/*/*.xml
@@ -38,6 +44,9 @@ logging:
     com.tsien: debug
 #    com.tsien.contentcenter.feignclient.UserCenterFeignClient: debug
 feign:
+  sentinel:
+    # 为feign整合sentinel
+    enabled: true
   client:
     config:
       # 全局配置
@@ -50,6 +59,12 @@ feign:
     max-connections: 200
     # feign单个路径的最大连接数
     max-connections-per-route: 50
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 
 
 

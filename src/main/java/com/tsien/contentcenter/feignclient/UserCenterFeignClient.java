@@ -2,6 +2,7 @@ package com.tsien.contentcenter.feignclient;
 
 import com.tsien.contentcenter.config.UserCenterFeignConfig;
 import com.tsien.contentcenter.domain.dto.user.UserDTO;
+import com.tsien.contentcenter.feignclient.fallback.UserCenterFeignClientFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  */
 
 //@FeignClient(name = "user-center", configuration = UserCenterFeignConfig.class)
-@FeignClient(name = "user-center")
+@FeignClient(name = "user-center", fallback = UserCenterFeignClientFallback.class)
 public interface UserCenterFeignClient {
 
     /**
