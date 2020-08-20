@@ -1,22 +1,7 @@
 spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/content_center?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-    username: root
-    password: 18896727773
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 81.68.78.224:8848
-        #        cluster-name: BJ
-    sentinel:
-#      filter:
-#        # 关闭对spring mvc端点的保护
-#        enabled: false
-      transport:
-        # 指定sentinel控制台的地址
-        dashboard: localhost:8080
-        port: 8720
+  profiles:
+    active: dev
+
   application:
     name: content-center
 
@@ -24,9 +9,6 @@ mybatis:
   mapper-locations: classpath:mappers/*/*.xml
   configuration:
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
-
-server:
-  port: 8010
 
 #配置文件方式配置Ribbon
 #user-center:
@@ -39,32 +21,8 @@ ribbon:
     enabled: true
     clients: user-center
 
-logging:
-  level:
-    com.tsien: debug
-#    com.tsien.contentcenter.feignclient.UserCenterFeignClient: debug
-feign:
-  sentinel:
-    # 为feign整合sentinel
-    enabled: true
-  client:
-    config:
-      # 全局配置
-      default:
-        loggerLevel: basic
-  # 让feign使用apache httpclient 做请求，而不是urlconnection
-  httpclient:
-    enabled: true
-    # feign的最大连接数
-    max-connections: 200
-    # feign单个路径的最大连接数
-    max-connections-per-route: 50
-
 management:
   endpoints:
     web:
       exposure:
         include: '*'
-
-
-
