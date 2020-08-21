@@ -8,10 +8,10 @@ VOLUME /tmp
 ADD /target/content-center-0.0.1-SNAPSHOT.jar /app.jar
 
 # 声明需要暴露的端口
-EXPOSE 8012
+EXPOSE 8012 8720
 
 # 设置上海时区
-RUN echo "Asia/shanghai" > /etc/timezone
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 # 配置容器启动后执行的命令
 ENTRYPOINT ["java","-jar","-Dspring.profiles.active=prod","-Dserver.port=8012","app.jar"]
