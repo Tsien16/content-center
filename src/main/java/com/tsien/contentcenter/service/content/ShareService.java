@@ -1,6 +1,8 @@
 package com.tsien.contentcenter.service.content;
 
+import com.tsien.contentcenter.domain.dto.content.ShareAuditDTO;
 import com.tsien.contentcenter.domain.dto.content.ShareDTO;
+import com.tsien.contentcenter.domain.model.content.Share;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,4 +21,13 @@ public interface ShareService {
      * @return ShareDTO
      */
     ShareDTO findById(Integer id);
+
+    /**
+     * 内容审核
+     *
+     * @param id       id
+     * @param auditDTO auditDTO
+     * @return Share
+     */
+    Share auditById(Integer id, ShareAuditDTO auditDTO);
 }

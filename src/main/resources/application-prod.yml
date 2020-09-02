@@ -21,6 +21,10 @@ spring:
         dashboard: 10.0.2.4:8090
         client-ip: 10.0.2.10
         port: 8720
+    stream:
+      rocketmq:
+        binder:
+          name-server: localhost:9876
 
 feign:
   sentinel:
@@ -43,6 +47,7 @@ logging:
   level:
     com.tsien: debug
 #    com.tsien.contentcenter.feignclient.UserCenterFeignClient: debug
+
 
 server:
   port: 8012
