@@ -2,14 +2,14 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://10.0.2.4:3306/content_center?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/content_center?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: root
     password: QWer!@34
 
   cloud:
     nacos:
       discovery:
-        server-addr: 10.0.2.4:8848
+        server-addr: 36.133.34.180:8848
         #        cluster-name: BJ
 
     sentinel:
@@ -18,13 +18,9 @@ spring:
       #        enabled: false
       transport:
         # 指定sentinel控制台的地址
-        dashboard: 10.0.2.4:8090
-        client-ip: 10.0.2.10
+        dashboard: 36.133.34.180:8090
+        client-ip: 81.68.78.224
         port: 8720
-    stream:
-      rocketmq:
-        binder:
-          name-server: localhost:9876
 
 feign:
   sentinel:

@@ -10,7 +10,6 @@ import com.tsien.contentcenter.domain.model.content.Share;
 import com.tsien.contentcenter.feignclient.UserCenterFeignClient;
 import com.tsien.contentcenter.service.content.ShareService;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -34,8 +33,8 @@ public class ShareServiceImpl implements ShareService {
     @Resource
     private UserCenterFeignClient userCenterFeignClient;
 
-    @Resource
-    private RocketMQTemplate rocketMQTemplate;
+//    @Resource
+//    private RocketMQTemplate rocketMQTemplate;
 
     /**
      * 通过ID获取分享详细
@@ -91,9 +90,9 @@ public class ShareServiceImpl implements ShareService {
 
         // 3 如果是PASS,那么为发布人添加积分
         // 异步执行
-        rocketMQTemplate.convertAndSend("add-bonus", UserAddBonusMsgDTO.builder()
-                .userId(share.getUserId())
-                .bonus(50).build());
+//        rocketMQTemplate.convertAndSend("add-bonus", UserAddBonusMsgDTO.builder()
+//                .userId(share.getUserId())
+//                .bonus(50).build());
 
         return share;
     }
