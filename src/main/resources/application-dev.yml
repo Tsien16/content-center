@@ -20,6 +20,10 @@ spring:
         # 指定sentinel控制台的地址
         dashboard: 36.133.34.180:8090
         port: 8720
+    stream:
+      rocketmq:
+        binder:
+          name-server: 36.133.26.228:9876
 
 feign:
   sentinel:

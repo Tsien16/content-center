@@ -21,6 +21,11 @@ spring:
         dashboard: 36.133.34.180:8090
         client-ip: 81.68.78.224
         port: 8720
+    stream:
+      rocketmq:
+        binder:
+          name-server: 36.133.26.228:9876
+
 
 feign:
   sentinel:
