@@ -36,11 +36,13 @@
         </dependency>
 
         <!-- 引入 Spring Cloud Alibaba Stream RocketMQ 相关依赖，将 RocketMQ 作为消息队列，并实现对其的自动配置 -->
+        <!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-stream-binder-rocketmq -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-stream-rocketmq</artifactId>
-            <version>2.2.1.RELEASE</version>
+            <artifactId>spring-cloud-stream-binder-rocketmq</artifactId>
+            <version>2.2.0.RELEASE</version>
         </dependency>
+
 
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
