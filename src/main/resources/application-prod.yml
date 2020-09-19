@@ -19,7 +19,7 @@ spring:
       transport:
         # 指定sentinel控制台的地址
         dashboard: localhost:8090
-        client-ip: 10.0.2.2
+        client-ip: 10.0.8.2
         port: 8720
     stream:
       rocketmq:
