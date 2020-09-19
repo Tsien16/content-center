@@ -21,8 +21,12 @@ ribbon:
     enabled: true
     clients: user-center
 
+
 management:
   endpoints:
     web:
       exposure:
         include: '*'
+  endpoint:
+    health:
+      show-details: always

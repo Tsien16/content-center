@@ -5,14 +5,20 @@ import com.alibaba.csp.sentinel.SphU;
 import com.alibaba.csp.sentinel.Tracer;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
+import com.tsien.contentcenter.domain.dto.messaging.UserAddBonusMsgDTO;
+import com.tsien.contentcenter.rocketmq.MySource;
 import com.tsien.contentcenter.sentineltest.TestControllerBlockHandler;
 import com.tsien.contentcenter.sentineltest.TestControllerFallback;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.cloud.stream.messaging.Source;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * Created with IntelliJ IDEA.
@@ -65,4 +71,32 @@ public class TestController {
         }
         return a;
     }
+
+    @Resource
+    private Source source;
+
+    @GetMapping("/test-stream")
+    public String testStream() {
+        source.output().send(
+                MessageBuilder.withPayload(UserAddBonusMsgDTO.builder().userId(1).bonus(100).build())
+                        .build()
+        );
+
+        return "success";
+    }
+
+    @Resource
+    private MySource mySource;
+
+    @GetMapping("/test-stream-2")
+    public String testStream2() {
+        mySource.output().send(
+                MessageBuilder.withPayload("消息体")
+                        .build()
+        );
+
+        return "success";
+    }
+
+
 }

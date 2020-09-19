@@ -30,4 +30,21 @@ public interface ShareService {
      * @return Share
      */
     Share auditById(Integer id, ShareAuditDTO auditDTO);
+
+    /**
+     * 审核
+     *
+     * @param id       id
+     * @param auditDTO auditDTO
+     */
+    void auditByIdInDb(Integer id, ShareAuditDTO auditDTO);
+
+    /**
+     * auditByIdWithRocketMqLog
+     *
+     * @param id            id
+     * @param auditDTO      auditDTO
+     * @param transactionId transactionId
+     */
+    void auditByIdWithRocketMqLog(Integer id, ShareAuditDTO auditDTO, String transactionId);
 }

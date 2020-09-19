@@ -25,6 +25,18 @@ spring:
       rocketmq:
         binder:
           name-server: localhost:9876
+        bindings:
+          output:
+            producer:
+              transactional: true
+              group: tx-add-bonus-group
+
+      bindings:
+        output:
+          # 用来指定topic
+          destination: add-bonus
+        my-output:
+          destination: stream-my-topic
 
 feign:
   sentinel:

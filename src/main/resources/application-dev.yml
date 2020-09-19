@@ -25,6 +25,10 @@ spring:
       rocketmq:
         binder:
           name-server: tsien16.com:9876
+      bindings:
+        output:
+          # 用来指定topic
+          destination: add-bonus
 
 feign:
   sentinel:
