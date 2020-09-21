@@ -1,4 +1,4 @@
-package com.tsien.contentcenter.config;
+package com.tsien.contentcenter.util;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
