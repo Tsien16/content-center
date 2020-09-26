@@ -46,7 +46,9 @@ feign:
     config:
       # 全局配置
       default:
-        loggerLevel: basic
+        loggerLevel: full
+        requestInterceptors:
+          - com.tsien.contentcenter.feignclient.interceptor.TokenRelayRequestInterceptor
   # 让feign使用apache httpclient 做请求，而不是urlconnection
   httpclient:
     enabled: true

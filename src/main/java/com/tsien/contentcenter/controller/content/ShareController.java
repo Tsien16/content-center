@@ -1,5 +1,6 @@
 package com.tsien.contentcenter.controller.content;
 
+import com.tsien.contentcenter.auth.CheckLogin;
 import com.tsien.contentcenter.domain.dto.content.ShareDTO;
 import com.tsien.contentcenter.service.content.ShareService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,9 @@ public class ShareController {
     private ShareService shareService;
 
     @GetMapping("/{id}")
+    @CheckLogin
     public ShareDTO findById(@PathVariable Integer id) {
+
         return shareService.findById(id);
     }
 }

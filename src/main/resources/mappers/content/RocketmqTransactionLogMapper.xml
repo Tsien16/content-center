@@ -26,7 +26,7 @@
         from rocketmq_transaction_log
         <where>
             <if test="transactionId != null and transactionId != ''">
-                AND id = #{id,jdbcType=INTEGER}
+                id = #{id,jdbcType=INTEGER}
             </if>
             <if test="transactionId != null and transactionId != ''">
                 AND transaction_Id = #{transactionId,jdbcType=VARCHAR}

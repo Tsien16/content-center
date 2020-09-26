@@ -1,6 +1,5 @@
 package com.tsien.contentcenter.feignclient;
 
-import com.tsien.contentcenter.config.UserCenterFeignConfig;
 import com.tsien.contentcenter.domain.dto.user.UserDTO;
 import com.tsien.contentcenter.feignclient.fallback.UserCenterFeignClientFallback;
 import org.springframework.cloud.openfeign.FeignClient;

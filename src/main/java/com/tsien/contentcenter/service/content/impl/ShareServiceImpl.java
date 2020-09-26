@@ -13,7 +13,6 @@ import com.tsien.contentcenter.domain.model.content.Share;
 import com.tsien.contentcenter.feignclient.UserCenterFeignClient;
 import com.tsien.contentcenter.service.content.ShareService;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.apache.rocketmq.spring.support.RocketMQHeaders;
 import org.springframework.beans.BeanUtils;
 import org.springframework.cloud.stream.messaging.Source;
