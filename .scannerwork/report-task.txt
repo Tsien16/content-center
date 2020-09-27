@@ -1,0 +1,6 @@
+projectKey=tsien:sonar
+serverUrl=http://36.156.138.249:9000
+serverVersion=8.4.2.36762
+dashboardUrl=http://36.156.138.249:9000/dashboard?id=tsien%3Asonar
+ceTaskId=AXTQj7oMFKWBVI9HY2pY
+ceTaskUrl=http://36.156.138.249:9000/api/ce/task?id=AXTQj7oMFKWBVI9HY2pY
