@@ -1,10 +1,13 @@
 package com.tsien.contentcenter.feignclient;
 
+import com.tsien.contentcenter.domain.dto.user.UserAddBonusDTO;
 import com.tsien.contentcenter.domain.dto.user.UserDTO;
 import com.tsien.contentcenter.feignclient.fallback.UserCenterFeignClientFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,4 +29,14 @@ public interface UserCenterFeignClient {
      */
     @GetMapping("/users/{id}")
     UserDTO findById(@PathVariable Integer id);
+
+    /**
+     * 增加积分
+     *
+     * @param userAddBonusDTO userAddBonusDTO
+     * @return userDTO
+     */
+    @PutMapping("/users/add-bonus")
+    UserDTO addBonus(@RequestBody UserAddBonusDTO userAddBonusDTO);
+
 }

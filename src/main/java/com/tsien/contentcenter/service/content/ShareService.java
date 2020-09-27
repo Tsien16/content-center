@@ -1,8 +1,11 @@
 package com.tsien.contentcenter.service.content;
 
+import com.github.pagehelper.PageInfo;
 import com.tsien.contentcenter.domain.dto.content.ShareAuditDTO;
 import com.tsien.contentcenter.domain.dto.content.ShareDTO;
 import com.tsien.contentcenter.domain.model.content.Share;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created with IntelliJ IDEA.
@@ -47,4 +50,24 @@ public interface ShareService {
      * @param transactionId transactionId
      */
     void auditByIdWithRocketMqLog(Integer id, ShareAuditDTO auditDTO, String transactionId);
+
+    /**
+     * 查询分享文章
+     *
+     * @param title    title
+     * @param pageNo   pageNo
+     * @param pageSize pageSize
+     * @param userId   userId
+     * @return shareDTO
+     */
+    PageInfo<Share> q(String title, Integer pageNo, Integer pageSize, Integer userId);
+
+    /**
+     * exchangeById
+     *
+     * @param id      id
+     * @param request request
+     * @return share
+     */
+    Share exchangeById(Integer id, HttpServletRequest request);
 }

@@ -1,6 +1,9 @@
 package com.tsien.contentcenter.dao.content;
 
 import com.tsien.contentcenter.domain.model.content.Share;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -58,4 +61,12 @@ public interface ShareMapper {
      * @return update count
      */
     int updateByPrimaryKey(Share record);
+
+    /**
+     * 查询文章
+     *
+     * @param title title
+     * @return shareList
+     */
+    List<Share> selectByParam(@Param("title") String title);
 }
